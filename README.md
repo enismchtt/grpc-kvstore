@@ -29,8 +29,10 @@ go run client/main.go 5001
 
 Run a command:
 
-> put x y
->Stored and replicated.
+```bash
+> put name surname
+Stored and replicated.
+```
 
 4. Start another client for a different peer (e.g., 5002)
 go run client/main.go 5002
@@ -38,5 +40,8 @@ go run client/main.go 5002
 
 Then check replication:
 
+```bash
 > list
->x = y
+name = surname
+...
+```
