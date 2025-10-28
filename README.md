@@ -14,18 +14,21 @@ List() → Stream all key–value pairs stored locally
 
 🚀 How to Run
 1. Generate gRPC code (already generated)
+```bash
 protoc --go_out=. --go_opt=paths=source_relative \
        --go-grpc_out=. --go-grpc_opt=paths=source_relative \
        proto/kvstore.proto
-
-2. Start 3 servers
+```
+3. Start 3 servers
+```bash
 go run server/main.go 5001 5002,5003
 go run server/main.go 5002 5001,5003
 go run server/main.go 5003 5001,5002
-
-3. Start a client on any port (e.g., 5001)
+```
+5. Start a client on any port (e.g., 5001)
+```bash
 go run client/main.go 5001
-
+```
 
 Run a command:
 
