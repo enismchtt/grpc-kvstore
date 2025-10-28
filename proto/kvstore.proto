@@ -1,0 +1,40 @@
+
+syntax = "proto3";
+
+package grpc_kvstore;   
+
+option go_package = "grpc-kvstore/proto";  
+
+import "google/protobuf/empty.proto";  //cross platform recog empty proto I used it instead message Empty {} 
+
+
+service KVStoreService {
+    rpc Put (PutRequest) returns (AckPutResponse);
+    rpc Get (GetRequest) returns (GetResponse);
+    rpc List (google.protobuf.Empty) returns (stream KeyValueResponse);
+
+    rpc Replicate (PutRequest) returns (AckPutResponse); // will be called internally in Put method 
+}
+
+message PutRequest {
+    string key = 1;
+    string value = 2;
+}
+
+message GetRequest {
+    string key = 1;
+}
+
+
+message AckPutResponse {
+    string response = 1;
+}
+
+message GetResponse {
+    string value = 1;
+}
+
+message KeyValueResponse {
+    string key = 1;
+    string value = 2;
+}
