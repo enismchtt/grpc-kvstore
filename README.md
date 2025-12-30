@@ -20,7 +20,7 @@ protoc --go_out=. --go_opt=paths=source_relative \
        proto/kvstore.proto
 ```
 3. Start 3 servers
-```bash
+```
 go run server/main.go 5001 5002,5003
 go run server/main.go 5002 5001,5003
 go run server/main.go 5003 5001,5002
